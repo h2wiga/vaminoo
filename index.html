@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>داشبورد سپرده وامینو بانکینو</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet"/>
+  <style>
+    html, body {background: #fff; min-height:100vh; margin:0; font-family: 'Vazir', Tahoma, Arial, sans-serif;}
+    body {display:flex; flex-direction:column; min-height:100vh;}
+    .main-orange {background: #ff7700; color: #fff;}
+    /* هدر */
+    .dashboard-header {width: 100%; background: #ff7700; padding: 14px 0 12px 0; display: flex; align-items: center; justify-content: center;gap:9px;}
+    .dashboard-header .bankino-logo {width: 44px; height: 44px; border-radius: 12px; background: #fff;}
+    .dashboard-header-title {color: #fff; font-size: 1.17rem; font-weight: bold;}
+    /* کل داشبورد */
+    .dashboard {display:none; flex-direction:column;min-height:100vh; background:#fff;}
+    .dashboard-ctr {width:100vw;max-width:420px;margin:0 auto; padding:0;flex: 1; display:flex; flex-direction:column;align-items:center;justify-content: center;}
+    /* بخش اطلاعات کاربر */
+    .user-meta {font-size: 1.11rem; color: #444; text-align: center; margin-top:10px;}
+    .user-meta span {font-weight:bold; color:#ff7700;font-size:1.14em;margin-left:7px;}
+    /* مبلغ سپرده */
+    .deposit-amount {margin-top:22px;background: #fff6ed; border-radius: 15px; box-shadow: 0 1px 8px #ff770021; padding: 18px 10px 16px 10px; display:block;text-align:center; width: 87vw; max-width: 350px;}
+    .deposit-label {color:#ff7700;font-weight:700;font-size:1.02rem;}
+    .deposit-amount-val {font-size: 2.08rem; font-weight: bold; color: #ee6202; letter-spacing: .6px; margin-top: 6px; display: block;}
+    /* وامینو */
+    .vamino-title {font-size: 1.37rem;font-weight: bold;color:#fff;background: #ff7700; border-radius: 9px 9px 0 0; text-align:center; padding:11px 6px 7px 6px;margin:0;}
+    .vamino-box {background:#f3f3fe; border-radius:0 0 14px 14px; box-shadow: 0 0 9px #fdeeee2e; width: 87vw; max-width:350px; display:flex;flex-direction:column;align-items:center; padding:0 0 22px 0;}
+    .vamino-row{margin-top:15px;}
+    .vamino-label {color:#ee6202;font-weight:bold;}
+    .vamino-countdown {display:flex; gap:9px; align-items:center; justify-content:center; margin-top:6px;}
+    .cd-part {display:flex; flex-direction:column; align-items:center; background:#fff; border-radius:7px; min-width:59px; min-height:41px; padding:6px 6px 4px 6px; margin:0 4px;}
+    .cd-number {font-size: 1.32rem;font-weight: bold; color: #ff7700;}
+    .cd-label {font-size:0.95rem;color:#444; margin-top:1px;}
+    /* لاگین */
+    .login-container {min-height: 100vh;}
+    .login-box {background: #fff; box-shadow:0 0 20px #ff77002a; border-radius: 20px; padding: 32px 18px 38px 18px; margin-top: 58px; width:98vw; max-width:340px; text-align:center;}
+    .bankino-logo {margin: 0 auto 13px auto; width: 55px;height:55px; border-radius: 10px; object-fit:cover;}
+    .login-title{font-size:1.35rem; margin:7px 0 7px;font-weight:bold;color: #222;}
+    .scan-fp-btn{background:#ff7700; color:#fff; border:none;border-radius: 50%;width:74px;height:74px; margin:32px auto 17px auto;display: flex; align-items:center;justify-content:center;font-size:2.6rem;box-shadow:0 0 18px #ff770033;cursor:pointer;}
+    .login-desc{color:#888;font-size:1.08rem;margin:2px 0 7px 0;}
+    /* انیمیشن انتظار */
+    .blur-bg {filter: blur(5px); pointer-events:none; user-select:none; transition:filter .3s;}
+    .loading-ui {z-index:1000; position:fixed; inset:0; background: rgba(255,255,255,.78); display: flex; flex-direction:column; align-items:center; justify-content:center; font-size:1.19rem; color:#ff7700; font-weight:bold;animation:fadeIn .6s;}
+    .loader-spinner {margin-bottom: 18px; border: 4px solid #ffd1ab; border-top: 4px solid #ff7700; border-radius:50%; width:50px; height:50px; animation:spin 1s linear infinite;}
+    @keyframes fadeIn {from { opacity:.1 } to { opacity:1 } }
+    @keyframes spin {0%{ transform:rotate(0);}100%{transform:rotate(360deg);}}
+    /* ریسپانسیو */
+    @media (max-width:598px) {
+      .dashboard-ctr, .deposit-amount, .vamino-box {max-width:99vw !important;}
+      .cd-part{min-width:51px;}
+      .vamino-title{font-size:1.08rem;}
+    }
+    @media (max-width:390px) {
+      .deposit-amount{font-size:.97rem;}
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container flex-c" id="login-main">
+    <div class="login-box">
+      <img src="https://uploadkon.ir/uploads/25b712_253672286d14c76773eec674a6683b5d99ca440d301dbcd87db8db45724158bc0c.png" class="bankino-logo" alt="بانکینو"/>
+      <div class="login-title">ورود با اثر انگشت</div>
+      <div class="login-desc">لطفاً اثر انگشت خود را لمس کنید</div>
+      <button class="scan-fp-btn" id="fp-btn">
+        <svg width="38" height="38" viewBox="0 0 24 24"><g><path fill="#fff" d="M12 11.2c-2.9 0-4.7 1.5-4.7 4a1 1 0 0 0 2 0c0-1.6 1-2 2.7-2s2.7.4 2.7 2a1 1 0 0 0 2 0c0-2.5-1.8-4-4.7-4zm0-1c2.1 0 3.7-1.3 3.7-3s-1.6-3-3.7-3-3.7 1.3-3.7 3 1.6 3 3.7 3zm8.48 2.93A11.88 11.88 0 0 0 12 7.2a11.88 11.88 0 0 0-8.48 4.93A1 1 0 1 0 4.6 15.07c.7-1.08 2.34-2.87 7.4-2.87s6.7 1.8 7.4 2.87a1 1 0 1 0 1.48-1.14z"></path></g></svg>
+      </button>
+    </div>
+  </div>
+  <div class="loading-ui" id="loading-ui" style="display:none;">
+    <div class="loader-spinner"></div>
+    در حال ورود... لطفاً صبر کنید...
+  </div>
+  <div class="dashboard" id="dashboard">
+    <div class="dashboard-header">
+      <img src="https://uploadkon.ir/uploads/25b712_253672286d14c76773eec674a6683b5d99ca440d301dbcd87db8db45724158bc0c.png" class="bankino-logo" alt="">
+      <div class="dashboard-header-title">داشبورد مشتری بانکینو</div>
+    </div>
+    <div class="dashboard-ctr">
+      <div class="user-meta">
+        <span>نام:</span> حامد عبدالهی <span>شناسه:</span> ۱۲۳۴۵۶۷۸
+      </div>
+      <div class="deposit-amount">
+        <div class="deposit-label">مبلغ سپرده شما</div>
+        <span class="deposit-amount-val">۹۸,۵۰۰,۰۰۰ <span style="font-size:1rem;color:#888;">تومان</span></span>
+      </div>
+      <div class="vamino-title">وام سیصد میلیونی وامینو</div>
+      <div class="vamino-box">
+        <div class="vamino-label vamino-row">مهلت فعال‌سازی وام شما:</div>
+        <div class="vamino-countdown" id="vamino-timer">
+          <div class="cd-part">
+            <div class="cd-number" id="cd-day">۰</div>
+            <div class="cd-label">روز</div>
+          </div>
+          <div class="cd-part">
+            <div class="cd-number" id="cd-hour">۰۰</div>
+            <div class="cd-label">ساعت</div>
+          </div>
+          <div class="cd-part">
+            <div class="cd-number" id="cd-min">۰۰</div>
+            <div class="cd-label">دقیقه</div>
+          </div>
+          <div class="cd-part">
+            <div class="cd-number" id="cd-sec">۰۰</div>
+            <div class="cd-label">ثانیه</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+const fpBtn = document.getElementById('fp-btn');
+const loginMain = document.getElementById('login-main');
+const loadingUi = document.getElementById('loading-ui');
+const dashboard = document.getElementById('dashboard');
+fpBtn.addEventListener('click', function() {
+  loginMain.classList.add('blur-bg');
+  loadingUi.style.display = 'flex';
+  setTimeout(() => {
+    loadingUi.style.display = 'none';
+    loginMain.style.display = 'none';
+    dashboard.style.display = 'flex';
+  }, 8000);
+});
+function vaminoCountdown(){
+  // امروز + 10 روز (ویترین شمارش معکوس واقعی)
+  const now = new Date();
+  const target = new Date(now.getTime() + 10 * 24 * 60 * 60 * 1000);
+  function updateTimer() {
+    const now2 = new Date();
+    let diff = Math.max(target - now2, 0);
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    document.getElementById('cd-day').textContent = days;
+    document.getElementById('cd-hour').textContent = (hours<10?"0":"")+hours;
+    document.getElementById('cd-min').textContent = (minutes<10?"0":"")+minutes;
+    document.getElementById('cd-sec').textContent = (seconds<10?"0":"")+seconds;
+  }
+  updateTimer();
+  setInterval(updateTimer, 1000);
+}
+vaminoCountdown();
+</script>
+</body>
+  </html>
+  
