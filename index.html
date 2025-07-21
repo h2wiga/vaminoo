@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -12,60 +13,333 @@
       --bankino-bg-light: #fff7f0;
       --bankino-gradient: linear-gradient(90deg,#ff7c1a 0,#ff9219 90%);
       --cd-bg: #fff;
+      --card-radius: 20px;
+      --shadow-main: 0 4px 18px #ff770020, 0 1px 0 #fff5ec;
+      --transition-main: 0.3s cubic-bezier(.4,0,.2,1);
     }
-    html, body {background: var(--bankino-bg-light); min-height:100vh; margin:0; font-family: 'Vazir', Tahoma, Arial, sans-serif;}
-    body {display:flex; flex-direction:column; min-height:100vh;align-items:center; justify-content:center;padding:0;}
+    html, body {
+      background: var(--bankino-bg-light);
+      min-height:100vh;
+      margin:0;
+      font-family: 'Vazir', Tahoma, Arial, sans-serif;
+    }
+    body {
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+    }
     /* HEADER */
-    .dashboard-header {width: 100vw; background: var(--bankino-gradient); padding: 16px 0 12px 0;
-      display: flex; align-items: center; justify-content: center; gap:13px; box-shadow:0 1px 12px #ffb85426;}
-    .dashboard-header .bankino-logo {width: 48px; height: 48px; border-radius: 12px; background: #fff; object-fit: cover;}
-    .dashboard-header-title {color: #fff; font-size: 1.18rem; font-weight: bold; letter-spacing:.2px;}
+    .dashboard-header {
+      width: 100vw;
+      background: var(--bankino-gradient);
+      padding: 20px 0 16px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap:18px;
+      box-shadow:0 1px 12px #ffb85426;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
+    .dashboard-header .bankino-logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: #fff;
+      object-fit: cover;
+      box-shadow: 0 2px 10px #ffb85433;
+    }
+    .dashboard-header-title {
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: bold;
+      letter-spacing:.5px;
+      text-shadow: 0 1px 5px #fa650080;
+    }
     /* DASHBOARD */
-    .dashboard {display:none; flex-direction:column; width:100vw; min-height:100vh;}
-    .dashboard-ctr {max-width:410px; width:96vw; margin:0 auto; padding:0;flex: 1; display:flex; flex-direction:column;align-items:center;justify-content: center;}
-    .centerstack {display:flex; flex-direction:column;align-items:center; justify-content:center; width:100%;}
+    .dashboard {
+      display:none;
+      flex-direction:column;
+      width:100vw;
+      min-height:100vh;
+    }
+    .dashboard-ctr {
+      max-width:420px;
+      width:96vw;
+      margin:0 auto;
+      padding:0;
+      flex: 1;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content: center;
+    }
+    .centerstack {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+    }
     /* USER DATA */
-    .user-meta {font-size: 1.11rem; color: #333; text-align: center; margin-top:10px;}
-    .user-meta span {font-weight:700; color:var(--bankino-orange-dark);font-size:1.19em;margin-left:8px;}
-    .card {background: #fff; border-radius: 18px; box-shadow:0 4px 18px #ff770020, 0 1px 0 #fff5ec; padding:28px 17px 26px 17px; margin:24px 0 10px 0; width:97vw; max-width:370px; display:flex; flex-direction:column;align-items:center;}
-    /* DEPOSIT */
-    .deposit-label {color:var(--bankino-orange-dark);font-weight:700;font-size:1.08rem;}
-    .deposit-amount-val {font-size: 2.09rem; font-weight: bold; color: #fa6500; letter-spacing: .7px; margin:12px 0 0 0; display: block;}
-    .deposit-suffix {font-size:1.2rem;color:#999;margin-right:5px;}
+    .user-meta {
+      font-size: 1.13rem;
+      color: #333;
+      text-align: center;
+      margin-top:10px;
+      margin-bottom:8px;
+      background:#fffdfa;
+      border-radius:14px;
+      padding:8px 0;
+      box-shadow: 0 2px 8px #ffb85418;
+    }
+    .user-meta span {
+      font-weight:700;
+      color:var(--bankino-orange-dark);
+      font-size:1.21em;
+      margin-left:8px;
+    }
+    .card {
+      background: #fff;
+      border-radius: var(--card-radius);
+      box-shadow: var(--shadow-main);
+      padding:32px 20px 28px 20px;
+      margin:28px 0 12px 0;
+      width:97vw;
+      max-width:390px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      transition: box-shadow var(--transition-main);
+    }
+    .card:hover {
+      box-shadow: 0 8px 24px #ff770045;
+    }
+    .deposit-label {
+      color:var(--bankino-orange-dark);
+      font-weight:700;
+      font-size:1.11rem;
+      letter-spacing:.1px;
+      margin-bottom:6px;
+    }
+    .deposit-amount-val {
+      font-size: 2.19rem;
+      font-weight: bold;
+      color: #fa6500;
+      letter-spacing: .7px;
+      margin:14px 0 0 0;
+      display: block;
+      text-shadow: 0 2px 8px #ffb85418;
+    }
+    .deposit-suffix {
+      font-size:1.2rem;
+      color:#999;
+      margin-right:7px;
+    }
     /* VAMINO */
-    .vamino-title {font-size:1.34rem;font-weight: bold;color:#fa6500;background: none; border-radius: 10px;text-align:center;margin:0 0 13px 0;padding:0;}
-    .vamino-box {background: #fffdfa; border-radius: 15px; box-shadow: 0 0 11px #ff950011, 0 1px 0 #ffe5cf; width:99%; max-width:355px; display:flex;flex-direction:column;align-items:center; padding:0 0 24px 0;margin-bottom:23px;}
-    .vamino-row{margin-top:15px;}
-    .vamino-label {color:#ff7b16;font-weight:bold;font-size:1.08rem;}
-    .vamino-countdown {display:flex; gap:10px; align-items:center; justify-content:center; margin-top:10px; flex-wrap: wrap;}
-    .cd-part {display:flex; flex-direction:column; align-items:center;background:var(--cd-bg); box-shadow:0 1px 7px #f4c09e38; border-radius:10px; min-width:61px; min-height:46px; padding:7px 7px 5px 7px; margin:0 4px;}
-    .cd-number {font-size: 1.36rem;font-weight: bold; color: #fa6500;}
-    .cd-label {font-size:1rem;color:#8c8c8c; margin-top:1px;}
+    .vamino-title {
+      font-size:1.36rem;
+      font-weight: bold;
+      color:#fa6500;
+      background: none;
+      border-radius: 12px;
+      text-align:center;
+      margin:0 0 15px 0;
+      padding:0;
+      letter-spacing:.2px;
+      text-shadow: 0 1px 8px #fa650033;
+    }
+    .vamino-box {
+      background: #fffdfa;
+      border-radius: 17px;
+      box-shadow: 0 0 14px #ff950022, 0 1px 0 #ffe5cf;
+      width:99%;
+      max-width:370px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:0 0 18px 0;
+      margin-bottom:18px;
+      transition: box-shadow var(--transition-main);
+    }
+    .vamino-box:hover {
+      box-shadow: 0 4px 22px #ff950050;
+    }
+    .vamino-row {
+      margin-top:19px;
+    }
+    .vamino-label {
+      color:#ff7b16;
+      font-weight:bold;
+      font-size:1.12rem;
+      letter-spacing:.1px;
+      margin-bottom:4px;
+    }
+    .vamino-countdown {
+      display:flex;
+      gap:14px;
+      align-items:center;
+      justify-content:center;
+      margin-top:12px;
+      flex-wrap: wrap;
+    }
+    .cd-part {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      background:var(--cd-bg);
+      box-shadow:0 1px 10px #f4c09e38;
+      border-radius:12px;
+      min-width:65px;
+      min-height:49px;
+      padding:8px 9px 6px 9px;
+      margin-bottom:4px;
+      transition: box-shadow var(--transition-main);
+      border:1px solid #ffe5cf;
+    }
+    .cd-part:hover {
+      box-shadow:0 3px 16px #fa650044;
+      border-color:#ffb854;
+    }
+    .cd-number {
+      font-size: 1.42rem;
+      font-weight: bold;
+      color: #fa6500;
+      letter-spacing:1px;
+      text-shadow: 0 1px 7px #ffb85418;
+    }
+    .cd-label {
+      font-size:1.04rem;
+      color:#8c8c8c;
+      margin-top:1px;
+      letter-spacing:.2px;
+    }
     /* LOGIN */
-    .login-container {min-height: 100vh;}
-    .login-box {background: #fff; box-shadow:0 0 20px #ff77002c; border-radius: 22px; padding: 38px 19px 44px 19px; margin-top: 72px; width:98vw; max-width:350px; text-align:center; display:flex;flex-direction:column;align-items:center;}
-    .bankino-logo {margin: 0 auto 13px auto; width: 58px;height:58px; border-radius: 12px; object-fit:cover;}
-    .login-title{font-size:1.35rem; margin:7px 0 7px;font-weight:bold;color: #202020;}
-    .scan-fp-btn{background:var(--bankino-gradient); color:#fff; border:none; box-shadow:0 0 18px #ff770033; border-radius: 50%;width:74px;height:74px; margin:37px auto 25px auto;display: flex; align-items:center;justify-content:center;font-size:2.6rem;cursor:pointer;transition:box-shadow .12s;}
-    .scan-fp-btn:active{box-shadow:0 0 32px #ff770073;}
-    .login-desc{color:#888;font-size:1.05rem;margin:2px 0 7px 0;}
+    .login-container {
+      min-height: 100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:100vw;
+    }
+    .login-box {
+      background: #fff;
+      box-shadow:0 0 24px #ff770033;
+      border-radius: 24px;
+      padding: 44px 22px 48px 22px;
+      margin-top: 72px;
+      width:98vw;
+      max-width:370px;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      transition: box-shadow var(--transition-main);
+    }
+    .login-box:hover {
+      box-shadow:0 0 38px #ff770055;
+    }
+    .bankino-logo {
+      margin: 0 auto 16px auto;
+      width: 64px;
+      height:64px;
+      border-radius: 14px;
+      object-fit:cover;
+      box-shadow: 0 2px 10px #ffb85433;
+      border:2px solid #ffb85433;
+    }
+    .login-title{
+      font-size:1.39rem;
+      margin:7px 0 11px;
+      font-weight:bold;
+      color: #202020;
+      letter-spacing:.1px;
+    }
+    .scan-fp-btn {
+      background:var(--bankino-gradient);
+      color:#fff;
+      border:none;
+      box-shadow:0 0 18px #ff770033;
+      border-radius: 50%;
+      width:78px;
+      height:78px;
+      margin:37px auto 29px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor:pointer;
+      font-size:1.25rem;
+      transition: box-shadow var(--transition-main), transform var(--transition-main);
+    }
+    .scan-fp-btn:active {
+      box-shadow:0 0 32px #ff770073;
+      transform: scale(0.98);
+    }
+    .scan-fp-btn:hover {
+      box-shadow:0 0 28px #ff770099;
+      transform: scale(1.04);
+    }
+    .login-desc {
+      color:#888;
+      font-size:1.07rem;
+      margin:2px 0 11px 0;
+      letter-spacing:.1px;
+    }
     /* WAIT ANIM */
-    .blur-bg {filter: blur(5.5px); pointer-events:none; user-select:none; transition:filter .4s;}
-    .loading-ui {z-index:1000; position:fixed; inset:0; background: rgba(255,255,255,.82); display: flex; flex-direction:column; align-items:center; justify-content:center; font-size:1.19rem; color:var(--bankino-orange-dark); font-weight:bold;animation:fadeIn .6s;}
-    .loader-spinner {margin-bottom: 21px; border: 5px solid #fdd7b5; border-top: 5px solid #fc8804; border-radius:50%; width:54px; height:54px; animation:spin .85s linear infinite;}
+    .blur-bg {
+      filter: blur(5.5px);
+      pointer-events:none;
+      user-select:none;
+      transition:filter .4s;
+    }
+    .loading-ui {
+      z-index:1000;
+      position:fixed;
+      inset:0;
+      background: rgba(255,255,255,.82);
+      display: flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      font-size:1.19rem;
+      color:var(--bankino-orange-dark);
+      letter-spacing:.1px;
+    }
+    .loader-spinner {
+      margin-bottom: 21px;
+      border: 5px solid #fdd7b5;
+      border-top: 5px solid #fc8804;
+      border-radius:50%;
+      width:54px;
+      height:54px;
+      animation:spin .85s linear infinite;
+    }
     @keyframes fadeIn {from { opacity:.13 } to { opacity:1 } }
     @keyframes spin {0%{ transform:rotate(0);}100%{transform:rotate(360deg);}}
     /* RESPONSIVE */
     @media (max-width:598px) {
       .dashboard-ctr, .card, .vamino-box {max-width:99vw !important;}
-      .cd-part{min-width:49px;}
-      .vamino-title{font-size:1.12rem;}
+      .cd-part{min-width:52px;}
+      .vamino-title{font-size:1.13rem;}
       .login-box{max-width:98vw !important;}
-      .vamino-countdown{gap:5px;}
+      .vamino-countdown{gap:7px;}
+      .user-meta{font-size:1rem;}
+      .deposit-amount-val {font-size:1.65rem;}
+    }
+    @media (max-width:420px) {
+      .card{font-size:.93rem;}
+      .vamino-title{font-size:.98rem;}
+      .vamino-label{font-size:.97rem;}
+      .cd-label{font-size:.91rem;}
     }
     @media (max-width:370px) {
-      .card{font-size:.93rem;}
-      .vamino-title{font-size:1rem;}
+      .card{font-size:.89rem;}
+      .vamino-title{font-size:.92rem;}
+      .login-box{padding:30px 10px 30px 10px;}
+      .cd-part{min-width:40px;}
     }
   </style>
 </head>
@@ -76,7 +350,7 @@
       <div class="login-title">ورود با اثر انگشت</div>
       <div class="login-desc">لطفاً اثر انگشت خود را لمس کنید</div>
       <button class="scan-fp-btn" id="fp-btn" aria-label="ورود با اثر انگشت">
-        <svg width="38" height="38" viewBox="0 0 24 24"><g><path fill="#fff" d="M12 11.2c-2.9 0-4.7 1.5-4.7 4a1 1 0 0 0 2 0c0-1.6 1-2 2.7-2s2.7.4 2.7 2a1 1 0 0 0 2 0c0-2.5-1.8-4-4.7-4zm0-1c2.1 0 3.7-1.3 3.7-3s-1.6-3-3.7-3-3.7 1.3-3.7 3 1.6 3 3.7 3zm8.48 2.93A11.88 11.88 0 0 0 12 7.2a11.88 11.88 0 0 0-8.48 4.93A1 1 0 1 0 4.6 15.07c.7-1.08 2.34-2.87 7.4-2.87s6.7 1.8 7.4 2.87a1 1 0 1 0 1.48-1.14z"></path></g></svg>
+        <svg width="38" height="38" viewBox="0 0 24 24"><g><path fill="#fff" d="M12 11.2c-2.9 0-4.7 1.5-4.7 4a1 1 0 0 0 2 0c0-1.6 1-2 2.7-2s2.7.4 2.7 2a1 1 0 0 0 2 0c0-2.5-1.8-4-4.7-4zm0-1c2.1 0 3.7-1.7 3.7-4.2c0-2.5-1.6-4.2-3.7-4.2s-3.7 1.7-3.7 4.2c0 2.5 1.6 4.2 3.7 4.2z"></path></g></svg>
       </button>
     </div>
   </div>
@@ -135,10 +409,11 @@ fpBtn.addEventListener('click', function() {
     loadingUi.style.display = 'none';
     loginMain.style.display = 'none';
     dashboard.style.display = 'flex';
-  }, 8000);
+  }, 3000); // زمان ورود را کوتاه‌تر کردم برای تجربه بهتر
 });
 function vaminoCountdown(){
-  let totalSeconds = (8 * 24 * 60 * 60) + (1 * 60 * 60) + (40 * 60);
+  // دو روز و سه ساعت و چهل دقیقه = 186000 ثانیه
+  let totalSeconds = 186000;
   function updateTimer(){
     if(totalSeconds >= 0){
       let t = totalSeconds;
@@ -162,3 +437,4 @@ vaminoCountdown();
 </script>
 </body>
 </html>
+```
