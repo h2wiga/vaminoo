@@ -1,4 +1,3 @@
-html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -31,43 +30,42 @@ html
       justify-content:center;
       padding:0;
     }
-    /* HEADER */
     .dashboard-header {
       width: 100vw;
       background: var(--bankino-gradient);
-      padding: 20px 0 16px 0;
+      padding: 18px 0 14px 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap:18px;
+      gap:16px;
       box-shadow:0 1px 12px #ffb85426;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
+      border-bottom-left-radius: 22px;
+      border-bottom-right-radius: 22px;
     }
     .dashboard-header .bankino-logo {
-      width: 54px;
-      height: 54px;
-      border-radius: 14px;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
       background: #fff;
       object-fit: cover;
       box-shadow: 0 2px 10px #ffb85433;
     }
     .dashboard-header-title {
       color: #fff;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: bold;
-      letter-spacing:.5px;
+      letter-spacing:.4px;
       text-shadow: 0 1px 5px #fa650080;
     }
-    /* DASHBOARD */
     .dashboard {
       display:none;
       flex-direction:column;
       width:100vw;
       min-height:100vh;
+      animation:fadeIn .6s;
     }
     .dashboard-ctr {
-      max-width:420px;
+      max-width:400px;
       width:96vw;
       margin:0 auto;
       padding:0;
@@ -84,32 +82,31 @@ html
       justify-content:center;
       width:100%;
     }
-    /* USER DATA */
     .user-meta {
-      font-size: 1.13rem;
+      font-size: 1.12rem;
       color: #333;
       text-align: center;
       margin-top:10px;
       margin-bottom:8px;
       background:#fffdfa;
-      border-radius:14px;
-      padding:8px 0;
+      border-radius:13px;
+      padding:7px 0;
       box-shadow: 0 2px 8px #ffb85418;
     }
     .user-meta span {
       font-weight:700;
       color:var(--bankino-orange-dark);
-      font-size:1.21em;
-      margin-left:8px;
+      font-size:1.16em;
+      margin-left:7px;
     }
     .card {
       background: #fff;
       border-radius: var(--card-radius);
       box-shadow: var(--shadow-main);
-      padding:32px 20px 28px 20px;
-      margin:28px 0 12px 0;
+      padding:28px 17px 24px 17px;
+      margin:24px 0 10px 0;
       width:97vw;
-      max-width:390px;
+      max-width:380px;
       display:flex;
       flex-direction:column;
       align-items:center;
@@ -121,69 +118,68 @@ html
     .deposit-label {
       color:var(--bankino-orange-dark);
       font-weight:700;
-      font-size:1.11rem;
+      font-size:1.08rem;
       letter-spacing:.1px;
-      margin-bottom:6px;
+      margin-bottom:5px;
     }
     .deposit-amount-val {
-      font-size: 2.19rem;
+      font-size: 2rem;
       font-weight: bold;
       color: #fa6500;
-      letter-spacing: .7px;
-      margin:14px 0 0 0;
+      letter-spacing: .6px;
+      margin:11px 0 0 0;
       display: block;
       text-shadow: 0 2px 8px #ffb85418;
     }
     .deposit-suffix {
-      font-size:1.2rem;
+      font-size:1.13rem;
       color:#999;
-      margin-right:7px;
+      margin-right:5px;
     }
-    /* VAMINO */
     .vamino-title {
-      font-size:1.36rem;
+      font-size:1.27rem;
       font-weight: bold;
       color:#fa6500;
       background: none;
       border-radius: 12px;
       text-align:center;
-      margin:0 0 15px 0;
+      margin:0 0 12px 0;
       padding:0;
-      letter-spacing:.2px;
+      letter-spacing:.17px;
       text-shadow: 0 1px 8px #fa650033;
     }
     .vamino-box {
       background: #fffdfa;
-      border-radius: 17px;
-      box-shadow: 0 0 14px #ff950022, 0 1px 0 #ffe5cf;
+      border-radius: 16px;
+      box-shadow: 0 0 12px #ff950022, 0 1px 0 #ffe5cf;
       width:99%;
-      max-width:370px;
+      max-width:355px;
       display:flex;
       flex-direction:column;
       align-items:center;
-      padding:0 0 18px 0;
-      margin-bottom:18px;
+      padding:0 0 16px 0;
+      margin-bottom:15px;
       transition: box-shadow var(--transition-main);
     }
     .vamino-box:hover {
       box-shadow: 0 4px 22px #ff950050;
     }
     .vamino-row {
-      margin-top:19px;
+      margin-top:16px;
     }
     .vamino-label {
       color:#ff7b16;
       font-weight:bold;
-      font-size:1.12rem;
-      letter-spacing:.1px;
+      font-size:1.09rem;
+      letter-spacing:.09px;
       margin-bottom:4px;
     }
     .vamino-countdown {
       display:flex;
-      gap:14px;
+      gap:12px;
       align-items:center;
       justify-content:center;
-      margin-top:12px;
+      margin-top:10px;
       flex-wrap: wrap;
     }
     .cd-part {
@@ -192,10 +188,10 @@ html
       align-items:center;
       background:var(--cd-bg);
       box-shadow:0 1px 10px #f4c09e38;
-      border-radius:12px;
-      min-width:65px;
-      min-height:49px;
-      padding:8px 9px 6px 9px;
+      border-radius:11px;
+      min-width:60px;
+      min-height:44px;
+      padding:8px 8px 6px 8px;
       margin-bottom:4px;
       transition: box-shadow var(--transition-main);
       border:1px solid #ffe5cf;
@@ -205,17 +201,17 @@ html
       border-color:#ffb854;
     }
     .cd-number {
-      font-size: 1.42rem;
+      font-size: 1.32rem;
       font-weight: bold;
       color: #fa6500;
-      letter-spacing:1px;
+      letter-spacing:.9px;
       text-shadow: 0 1px 7px #ffb85418;
     }
     .cd-label {
-      font-size:1.04rem;
+      font-size:.98rem;
       color:#8c8c8c;
       margin-top:1px;
-      letter-spacing:.2px;
+      letter-spacing:.17px;
     }
     /* LOGIN */
     .login-container {
@@ -229,10 +225,10 @@ html
       background: #fff;
       box-shadow:0 0 24px #ff770033;
       border-radius: 24px;
-      padding: 44px 22px 48px 22px;
-      margin-top: 72px;
+      padding: 40px 19px 44px 19px;
+      margin-top: 62px;
       width:98vw;
-      max-width:370px;
+      max-width:355px;
       text-align:center;
       display:flex;
       flex-direction:column;
@@ -243,16 +239,16 @@ html
       box-shadow:0 0 38px #ff770055;
     }
     .bankino-logo {
-      margin: 0 auto 16px auto;
-      width: 64px;
-      height:64px;
-      border-radius: 14px;
+      margin: 0 auto 13px auto;
+      width: 58px;
+      height:58px;
+      border-radius: 13px;
       object-fit:cover;
       box-shadow: 0 2px 10px #ffb85433;
       border:2px solid #ffb85433;
     }
     .login-title{
-      font-size:1.39rem;
+      font-size:1.29rem;
       margin:7px 0 11px;
       font-weight:bold;
       color: #202020;
@@ -264,14 +260,14 @@ html
       border:none;
       box-shadow:0 0 18px #ff770033;
       border-radius: 50%;
-      width:78px;
-      height:78px;
-      margin:37px auto 29px auto;
+      width:72px;
+      height:72px;
+      margin:33px auto 25px auto;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor:pointer;
-      font-size:1.25rem;
+      font-size:1.18rem;
       transition: box-shadow var(--transition-main), transform var(--transition-main);
     }
     .scan-fp-btn:active {
@@ -284,11 +280,10 @@ html
     }
     .login-desc {
       color:#888;
-      font-size:1.07rem;
+      font-size:1.02rem;
       margin:2px 0 11px 0;
-      letter-spacing:.1px;
+      letter-spacing:.09px;
     }
-    /* WAIT ANIM */
     .blur-bg {
       filter: blur(5.5px);
       pointer-events:none;
@@ -304,17 +299,17 @@ html
       flex-direction:column;
       align-items:center;
       justify-content:center;
-      font-size:1.19rem;
+      font-size:1.13rem;
       color:var(--bankino-orange-dark);
-      letter-spacing:.1px;
+      letter-spacing:.09px;
     }
     .loader-spinner {
-      margin-bottom: 21px;
+      margin-bottom: 17px;
       border: 5px solid #fdd7b5;
       border-top: 5px solid #fc8804;
       border-radius:50%;
-      width:54px;
-      height:54px;
+      width:46px;
+      height:46px;
       animation:spin .85s linear infinite;
     }
     @keyframes fadeIn {from { opacity:.13 } to { opacity:1 } }
@@ -322,24 +317,24 @@ html
     /* RESPONSIVE */
     @media (max-width:598px) {
       .dashboard-ctr, .card, .vamino-box {max-width:99vw !important;}
-      .cd-part{min-width:52px;}
-      .vamino-title{font-size:1.13rem;}
+      .cd-part{min-width:48px;}
+      .vamino-title{font-size:1.09rem;}
       .login-box{max-width:98vw !important;}
-      .vamino-countdown{gap:7px;}
-      .user-meta{font-size:1rem;}
-      .deposit-amount-val {font-size:1.65rem;}
+      .vamino-countdown{gap:6px;}
+      .user-meta{font-size:.97rem;}
+      .deposit-amount-val {font-size:1.55rem;}
     }
     @media (max-width:420px) {
-      .card{font-size:.93rem;}
-      .vamino-title{font-size:.98rem;}
-      .vamino-label{font-size:.97rem;}
-      .cd-label{font-size:.91rem;}
+      .card{font-size:.89rem;}
+      .vamino-title{font-size:.91rem;}
+      .vamino-label{font-size:.93rem;}
+      .cd-label{font-size:.87rem;}
     }
     @media (max-width:370px) {
-      .card{font-size:.89rem;}
-      .vamino-title{font-size:.92rem;}
-      .login-box{padding:30px 10px 30px 10px;}
-      .cd-part{min-width:40px;}
+      .card{font-size:.85rem;}
+      .vamino-title{font-size:.89rem;}
+      .login-box{padding:24px 7px 24px 7px;}
+      .cd-part{min-width:36px;}
     }
   </style>
 </head>
@@ -350,7 +345,8 @@ html
       <div class="login-title">ورود با اثر انگشت</div>
       <div class="login-desc">لطفاً اثر انگشت خود را لمس کنید</div>
       <button class="scan-fp-btn" id="fp-btn" aria-label="ورود با اثر انگشت">
-        <svg width="38" height="38" viewBox="0 0 24 24"><g><path fill="#fff" d="M12 11.2c-2.9 0-4.7 1.5-4.7 4a1 1 0 0 0 2 0c0-1.6 1-2 2.7-2s2.7.4 2.7 2a1 1 0 0 0 2 0c0-2.5-1.8-4-4.7-4zm0-1c2.1 0 3.7-1.7 3.7-4.2c0-2.5-1.6-4.2-3.7-4.2s-3.7 1.7-3.7 4.2c0 2.5 1.6 4.2 3.7 4.2z"></path></g></svg>
+        <svg width="38" height="38" viewBox="0 0 24 24"><g><path fill="#fff" d="M12 11.2c-2.9 0-4.7 1.5-4.7 4a1 1 0 0 0 2 0c0-1.6 1-2 2.7-2s2.7.4 2.7 2a1 1 0 0 0 2 0c0-2.5-1.8-4-4.7-4zm0-1c2.1 0 3.7-1[...]"/>
+        </g></svg>
       </button>
     </div>
   </div>
@@ -409,11 +405,11 @@ fpBtn.addEventListener('click', function() {
     loadingUi.style.display = 'none';
     loginMain.style.display = 'none';
     dashboard.style.display = 'flex';
-  }, 3000); // زمان ورود را کوتاه‌تر کردم برای تجربه بهتر
+  }, 3000);
 });
 function vaminoCountdown(){
-  // دو روز و سه ساعت و چهل دقیقه = 186000 ثانیه
-  let totalSeconds = 186000;
+  // یک روز ۷ ساعت و ۵۰ دقیقه = 114600 ثانیه
+  let totalSeconds = 114600;
   function updateTimer(){
     if(totalSeconds >= 0){
       let t = totalSeconds;
@@ -436,5 +432,4 @@ function vaminoCountdown(){
 vaminoCountdown();
 </script>
 </body>
-</html>
-```
+        </html>
