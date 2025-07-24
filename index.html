@@ -2,416 +2,323 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>داشبورد مشتری و سپرده وامینو بانکینو</title>
+  <title>صفحه تسهیلات دومینو بانکینو</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet"/>
   <style>
     :root {
-      --bankino-orange: #ff7700;
-      --bankino-orange-dark: #fa6500;
-      --bankino-bg-light: #fff7f0;
-      --bankino-gradient: linear-gradient(90deg,#ff7c1a 0,#ff9219 90%);
-      --cd-bg: #fff;
-      --card-radius: 20px;
-      --shadow-main: 0 4px 18px #ff770020, 0 1px 0 #fff5ec;
-      --transition-main: 0.3s cubic-bezier(.4,0,.2,1);
+      --main-orange: #ff7700;
+      --main-orange-dark: #fa6500;
+      --main-bg: #fbfbff;
+      --main-gradient: linear-gradient(90deg,#ff7c1a 0,#ff9219 90%);
+      --main-radius: 22px;
+      --main-shadow: 0 4px 18px #ff770020, 0 2px 8px #ffe5cf;
+      --part-shadow: 0 2px 12px #ffb85415;
+      --transition: .22s cubic-bezier(.4,0,.2,1);
     }
-    html, body {
-      background: var(--bankino-bg-light);
-      min-height:100vh;
-      margin:0;
-      font-family: 'Vazir', Tahoma, Arial, sans-serif;
-    }
+
     body {
-      display:flex;
-      flex-direction:column;
-      min-height:100vh;
-      align-items:center;
-      justify-content:center;
-      padding:0;
+      min-height: 100vh;
+      background: var(--main-bg);
+      font-family: 'Vazir', Tahoma, Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
     }
+
     .dashboard-header {
+      background: var(--main-gradient);
       width: 100vw;
-      background: var(--bankino-gradient);
-      padding: 18px 0 14px 0;
+      padding: 24px 0 20px 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap:16px;
-      box-shadow:0 1px 12px #ffb85426;
-      border-bottom-left-radius: 22px;
-      border-bottom-right-radius: 22px;
+      gap: 18px;
+      box-shadow: 0 1px 14px #ffb85429;
+      border-bottom-left-radius: var(--main-radius);
+      border-bottom-right-radius: var(--main-radius);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
+
     .dashboard-header .bankino-logo {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
+      width: 56px;
+      height: 56px;
+      border-radius: 15px;
       background: #fff;
       object-fit: cover;
       box-shadow: 0 2px 10px #ffb85433;
+      border: 2px solid #fff3e6;
     }
+
     .dashboard-header-title {
       color: #fff;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: bold;
-      letter-spacing:.4px;
-      text-shadow: 0 1px 5px #fa650080;
+      letter-spacing: .4px;
+      text-shadow: 0 2px 8px #fa650080;
     }
-    .dashboard {
-      display:none;
-      flex-direction:column;
-      width:100vw;
-      min-height:100vh;
-      animation:fadeIn .6s;
-    }
+
     .dashboard-ctr {
-      max-width:400px;
-      width:96vw;
-      margin:0 auto;
-      padding:0;
-      flex: 1;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
+      max-width: 400px;
+      width: 96vw;
+      margin: 0 auto;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
+      margin-top: 32px;
+      gap: 22px;
     }
-    .centerstack {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      width:100%;
-    }
+
     .user-meta {
-      font-size: 1.12rem;
-      color: #333;
+      font-size: 1.08rem;
+      color: #222;
+      background: #fffdfa;
+      border-radius: 15px;
+      padding: 9px 0;
+      width: 100%;
       text-align: center;
-      margin-top:10px;
-      margin-bottom:8px;
-      background:#fffdfa;
-      border-radius:13px;
-      padding:7px 0;
-      box-shadow: 0 2px 8px #ffb85418;
+      box-shadow: 0 2px 10px #ffb85415;
+      margin-bottom: 5px;
     }
+
     .user-meta span {
-      font-weight:700;
-      color:var(--bankino-orange-dark);
-      font-size:1.16em;
-      margin-left:7px;
+      font-weight: 700;
+      color: var(--main-orange-dark);
+      margin-left: 8px;
     }
+
     .card {
       background: #fff;
-      border-radius: var(--card-radius);
-      box-shadow: var(--shadow-main);
-      padding:28px 17px 24px 17px;
-      margin:24px 0 10px 0;
-      width:97vw;
-      max-width:380px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      transition: box-shadow var(--transition-main);
+      border-radius: var(--main-radius);
+      box-shadow: var(--main-shadow);
+      padding: 22px 14px 19px 14px;
+      width: 97vw;
+      max-width: 370px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow var(--transition);
     }
     .card:hover {
-      box-shadow: 0 8px 24px #ff770045;
+      box-shadow: 0 8px 28px #ff770045;
+      transform: translateY(-2px) scale(1.02);
     }
+
     .deposit-label {
-      color:var(--bankino-orange-dark);
-      font-weight:700;
-      font-size:1.08rem;
-      letter-spacing:.1px;
-      margin-bottom:5px;
+      color: var(--main-orange-dark);
+      font-weight: 700;
+      font-size: 1.09rem;
+      margin-bottom: 4px;
     }
+
     .deposit-amount-val {
-      font-size: 2rem;
+      font-size: 2.1rem;
       font-weight: bold;
       color: #fa6500;
       letter-spacing: .6px;
-      margin:11px 0 0 0;
-      display: block;
+      margin: 10px 0 0 0;
       text-shadow: 0 2px 8px #ffb85418;
     }
     .deposit-suffix {
-      font-size:1.13rem;
-      color:#999;
-      margin-right:5px;
+      font-size: 1.11rem;
+      color: #999;
+      margin-right: 4px;
     }
+
     .vamino-title {
-      font-size:1.27rem;
+      font-size: 1.22rem;
       font-weight: bold;
-      color:#fa6500;
-      background: none;
-      border-radius: 12px;
-      text-align:center;
-      margin:0 0 12px 0;
-      padding:0;
-      letter-spacing:.17px;
+      color: #fa6500;
+      margin-bottom: 10px;
+      text-align: center;
+      letter-spacing: .17px;
       text-shadow: 0 1px 8px #fa650033;
     }
+
     .vamino-box {
       background: #fffdfa;
       border-radius: 16px;
       box-shadow: 0 0 12px #ff950022, 0 1px 0 #ffe5cf;
-      width:99%;
-      max-width:355px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      padding:0 0 16px 0;
-      margin-bottom:15px;
-      transition: box-shadow var(--transition-main);
+      width: 99%;
+      max-width: 355px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0 18px 0;
+      margin-bottom: 13px;
+      transition: box-shadow var(--transition);
+      animation: fadeIn .7s;
     }
     .vamino-box:hover {
       box-shadow: 0 4px 22px #ff950050;
     }
+
     .vamino-row {
-      margin-top:16px;
+      margin-top: 16px;
     }
+
     .vamino-label {
-      color:#ff7b16;
-      font-weight:bold;
-      font-size:1.09rem;
-      letter-spacing:.09px;
-      margin-bottom:4px;
+      color: #ff7b16;
+      font-weight: bold;
+      font-size: 1.09rem;
+      margin-bottom: 4px;
     }
+
     .vamino-countdown {
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:center;
-      margin-top:10px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 12px;
       flex-wrap: wrap;
+      transition: filter var(--transition);
     }
+
     .cd-part {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      background:var(--cd-bg);
-      box-shadow:0 1px 10px #f4c09e38;
-      border-radius:11px;
-      min-width:60px;
-      min-height:44px;
-      padding:8px 8px 6px 8px;
-      margin-bottom:4px;
-      transition: box-shadow var(--transition-main);
-      border:1px solid #ffe5cf;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      box-shadow: var(--part-shadow);
+      border-radius: 13px;
+      min-width: 58px;
+      min-height: 46px;
+      padding: 9px 12px 7px 12px;
+      margin-bottom: 5px;
+      transition: box-shadow var(--transition), border-color var(--transition);
+      border: 1px solid #ffe5cf;
     }
+
     .cd-part:hover {
-      box-shadow:0 3px 16px #fa650044;
-      border-color:#ffb854;
+      box-shadow: 0 3px 16px #fa650044;
+      border-color: #ffb854;
     }
+
     .cd-number {
-      font-size: 1.32rem;
+      font-size: 1.45rem;
       font-weight: bold;
       color: #fa6500;
-      letter-spacing:.9px;
+      letter-spacing: .9px;
       text-shadow: 0 1px 7px #ffb85418;
     }
     .cd-label {
-      font-size:.98rem;
-      color:#8c8c8c;
-      margin-top:1px;
-      letter-spacing:.17px;
+      font-size: .97rem;
+      color: #8c8c8c;
+      margin-top: 1px;
+      letter-spacing: .15px;
     }
-    /* LOGIN */
-    .login-container {
-      min-height: 100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      width:100vw;
-    }
-    .login-box {
-      background: #fff;
-      box-shadow:0 0 24px #ff770033;
-      border-radius: 24px;
-      padding: 40px 19px 44px 19px;
-      margin-top: 62px;
-      width:98vw;
-      max-width:355px;
-      text-align:center;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      transition: box-shadow var(--transition-main);
-    }
-    .login-box:hover {
-      box-shadow:0 0 38px #ff770055;
-    }
-    .bankino-logo {
-      margin: 0 auto 13px auto;
-      width: 58px;
-      height:58px;
+
+    .request-btn {
+      display: block;
+      width: 93%;
+      max-width: 330px;
+      font-size: 1.15rem;
+      margin: 18px auto 0 auto;
+      padding: 12px 0;
       border-radius: 13px;
-      object-fit:cover;
-      box-shadow: 0 2px 10px #ffb85433;
-      border:2px solid #ffb85433;
+      border: none;
+      color: #fff;
+      background: linear-gradient(90deg,#ffab49 0,#ff7700 100%);
+      box-shadow: 0 2px 14px #ffb85423;
+      cursor: not-allowed;
+      opacity: 0.5;
+      font-weight: 700;
+      letter-spacing: .09px;
+      transition: background var(--transition), opacity var(--transition), box-shadow var(--transition), transform var(--transition);
+      outline: none;
+      pointer-events: none;
+      position: relative;
+      z-index: 1;
     }
-    .login-title{
-      font-size:1.29rem;
-      margin:7px 0 11px;
-      font-weight:bold;
-      color: #202020;
-      letter-spacing:.1px;
+
+    .request-btn.active {
+      opacity: 1;
+      background: linear-gradient(90deg,#ff9219 0,#fa6500 100%);
+      cursor: pointer;
+      pointer-events: auto;
+      box-shadow: 0 6px 20px #ff770055;
+      animation: btnPop .55s cubic-bezier(.42,1.8,.62,1.01);
+      transform: translateY(0) scale(1.07);
     }
-    .scan-fp-btn {
-      background:var(--bankino-gradient);
-      color:#fff;
-      border:none;
-      box-shadow:0 0 18px #ff770033;
-      border-radius: 50%;
-      width:72px;
-      height:72px;
-      margin:33px auto 25px auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor:pointer;
-      font-size:1.18rem;
-      transition: box-shadow var(--transition-main), transform var(--transition-main);
+
+    .request-btn:active {
+      transform: scale(.98);
+      box-shadow: 0 2px 10px #ffb85455;
     }
-    .scan-fp-btn:active {
-      box-shadow:0 0 32px #ff770073;
-      transform: scale(0.98);
+
+    @keyframes fadeIn {from { opacity:.15 } to { opacity:1 } }
+    @keyframes btnPop {
+      0% { transform: scale(0.9);}
+      60% { transform: scale(1.12);}
+      100% { transform: scale(1);}
     }
-    .scan-fp-btn:hover {
-      box-shadow:0 0 28px #ff770099;
-      transform: scale(1.04);
-    }
-    .login-desc {
-      color:#888;
-      font-size:1.02rem;
-      margin:2px 0 11px 0;
-      letter-spacing:.09px;
-    }
-    .blur-bg {
-      filter: blur(5.5px);
-      pointer-events:none;
-      user-select:none;
-      transition:filter .4s;
-    }
-    .loading-ui {
-      z-index:1000;
-      position:fixed;
-      inset:0;
-      background: rgba(255,255,255,.82);
-      display: flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      font-size:1.13rem;
-      color:var(--bankino-orange-dark);
-      letter-spacing:.09px;
-    }
-    .loader-spinner {
-      margin-bottom: 17px;
-      border: 5px solid #fdd7b5;
-      border-top: 5px solid #fc8804;
-      border-radius:50%;
-      width:46px;
-      height:46px;
-      animation:spin .85s linear infinite;
-    }
-    @keyframes fadeIn {from { opacity:.13 } to { opacity:1 } }
-    @keyframes spin {0%{ transform:rotate(0);}100%{transform:rotate(360deg);}}
-    /* RESPONSIVE */
-    @media (max-width:598px) {
+
+    /* Responsive */
+    @media (max-width: 600px) {
       .dashboard-ctr, .card, .vamino-box {max-width:99vw !important;}
-      .cd-part{min-width:48px;}
-      .vamino-title{font-size:1.09rem;}
-      .login-box{max-width:98vw !important;}
-      .vamino-countdown{gap:6px;}
+      .cd-part{min-width:44px;}
+      .vamino-title{font-size:1.07rem;}
       .user-meta{font-size:.97rem;}
-      .deposit-amount-val {font-size:1.55rem;}
+      .deposit-amount-val {font-size:1.38rem;}
+      .request-btn {font-size:1rem;}
     }
-    @media (max-width:420px) {
-      .card{font-size:.89rem;}
-      .vamino-title{font-size:.91rem;}
-      .vamino-label{font-size:.93rem;}
-      .cd-label{font-size:.87rem;}
-    }
-    @media (max-width:370px) {
-      .card{font-size:.85rem;}
-      .vamino-title{font-size:.89rem;}
-      .login-box{padding:24px 7px 24px 7px;}
-      .cd-part{min-width:36px;}
+    @media (max-width: 380px) {
+      .cd-part{min-width:34px;}
+      .request-btn {font-size:.96rem;}
     }
   </style>
 </head>
 <body>
-  <div class="login-container flex-c" id="login-main">
-    <div class="login-box">
-      <img src="https://uploadkon.ir/uploads/25b712_253672286d14c76773eec674a6683b5d99ca440d301dbcd87db8db45724158bc0c.png" class="bankino-logo" alt="بانکینو"/>
-      <div class="login-title">ورود با اثر انگشت</div>
-      <div class="login-desc">لطفاً اثر انگشت خود را لمس کنید</div>
-      <button class="scan-fp-btn" id="fp-btn" aria-label="ورود با اثر انگشت">
-        <svg width="38" height="38" viewBox="0 0 24 24"><g><path fill="#fff" d="M12 11.2c-2.9 0-4.7 1.5-4.7 4a1 1 0 0 0 2 0c0-1.6 1-2 2.7-2s2.7.4 2.7 2a1 1 0 0 0 2 0c0-2.5-1.8-4-4.7-4zm0-1c2.1 0 3.7-1[...]"/>
-        </g></svg>
-      </button>
-    </div>
+  <div class="dashboard-header">
+    <img src="https://uploadkon.ir/uploads/25b712_253672286d14c76773eec674a6683b5d99ca440d301dbcd87db8db45724158bc0c.png" class="bankino-logo" alt="">
+    <div class="dashboard-header-title">داشبورد تسهیلات دومینو بانکینو</div>
   </div>
-  <div class="loading-ui" id="loading-ui" style="display:none;">
-    <div class="loader-spinner"></div>
-    در حال ورود... لطفاً صبر کنید...
-  </div>
-  <div class="dashboard" id="dashboard">
-    <div class="dashboard-header">
-      <img src="https://uploadkon.ir/uploads/25b712_253672286d14c76773eec674a6683b5d99ca440d301dbcd87db8db45724158bc0c.png" class="bankino-logo" alt="">
-      <div class="dashboard-header-title">داشبورد مشتری بانکینو</div>
+  <div class="dashboard-ctr">
+    <div class="user-meta"><span>نام:</span> حامد عبدالهی <span>شناسه:</span> 4650814477**54</div>
+    <div class="card">
+      <span class="deposit-label">مبلغ سپرده شما</span>
+      <span class="deposit-amount-val">۹۸,۵۰۰,۰۰۰<span class="deposit-suffix">تومان</span></span>
     </div>
-    <div class="dashboard-ctr">
-      <div class="centerstack">
-        <div class="user-meta" style="margin-bottom:8px;">
-          <span>نام:</span> حامد عبدالهی <span>شناسه:</span> 4650814477**54
+    <div class="vamino-title">مهلت فعال‌سازی تسهیلات دومینو بانکینو</div>
+    <div class="vamino-box">
+      <div class="vamino-label vamino-row">مهلت باقی‌مانده:</div>
+      <div class="vamino-countdown" id="vamino-timer">
+        <div class="cd-part">
+          <div class="cd-number" id="cd-day">۰</div>
+          <div class="cd-label">روز</div>
         </div>
-        <div class="card">
-          <span class="deposit-label">مبلغ سپرده شما</span>
-          <span class="deposit-amount-val">۹۸,۵۰۰,۰۰۰<span class="deposit-suffix">تومان</span></span>
+        <div class="cd-part">
+          <div class="cd-number" id="cd-hour">۱۸</div>
+          <div class="cd-label">ساعت</div>
         </div>
-        <div class="vamino-title">وام سیصد میلیونی وامینو</div>
-        <div class="vamino-box">
-          <div class="vamino-label vamino-row">مهلت فعال‌سازی وام شما:</div>
-          <div class="vamino-countdown" id="vamino-timer">
-            <div class="cd-part">
-              <div class="cd-number" id="cd-day">۰</div>
-              <div class="cd-label">روز</div>
-            </div>
-            <div class="cd-part">
-              <div class="cd-number" id="cd-hour">۰۰</div>
-              <div class="cd-label">ساعت</div>
-            </div>
-            <div class="cd-part">
-              <div class="cd-number" id="cd-min">۰۰</div>
-              <div class="cd-label">دقیقه</div>
-            </div>
-            <div class="cd-part">
-              <div class="cd-number" id="cd-sec">۰۰</div>
-              <div class="cd-label">ثانیه</div>
-            </div>
-          </div>
+        <div class="cd-part">
+          <div class="cd-number" id="cd-min">۴۰</div>
+          <div class="cd-label">دقیقه</div>
+        </div>
+        <div class="cd-part">
+          <div class="cd-number" id="cd-sec">۰۰</div>
+          <div class="cd-label">ثانیه</div>
         </div>
       </div>
+      <button class="request-btn" id="loan-request-btn" disabled>درخواست تسهیلات دومینو بانکینو</button>
     </div>
   </div>
 <script>
-const fpBtn = document.getElementById('fp-btn');
-const loginMain = document.getElementById('login-main');
-const loadingUi = document.getElementById('loading-ui');
-const dashboard = document.getElementById('dashboard');
-fpBtn.addEventListener('click', function() {
-  loginMain.classList.add('blur-bg');
-  loadingUi.style.display = 'flex';
-  setTimeout(() => {
-    loadingUi.style.display = 'none';
-    loginMain.style.display = 'none';
-    dashboard.style.display = 'flex';
-  }, 3000);
-});
-function vaminoCountdown(){
-  // یک روز ۷ ساعت و ۵۰ دقیقه = 114600 ثانیه
-  let totalSeconds = 114600;
-  function updateTimer(){
-    if(totalSeconds >= 0){
+  // زمان اولیه: 0 روز 18 ساعت 40 دقیقه
+  let totalSeconds = (18 * 60 * 60) + (40 * 60); // 67200 ثانیه
+
+  function pad2(num) {
+    return num.toString().padStart(2, '0').replace(/\d/g, d => String.fromCharCode(d.charCodeAt(0) + 0x06F0 - 0x30));
+  }
+
+  function updateTimer() {
+    if (totalSeconds >= 0) {
       let t = totalSeconds;
       const days = Math.floor(t / (24*60*60));
       t %= 24*60*60;
@@ -419,17 +326,37 @@ function vaminoCountdown(){
       t %= 60*60;
       const minutes = Math.floor(t / 60);
       const seconds = t % 60;
-      document.getElementById('cd-day').textContent = days;
-      document.getElementById('cd-hour').textContent = (hours<10?"0":"")+hours;
-      document.getElementById('cd-min').textContent = (minutes<10?"0":"")+minutes;
-      document.getElementById('cd-sec').textContent = (seconds<10?"0":"")+seconds;
+      document.getElementById('cd-day').textContent = pad2(days);
+      document.getElementById('cd-hour').textContent = pad2(hours);
+      document.getElementById('cd-min').textContent = pad2(minutes);
+      document.getElementById('cd-sec').textContent = pad2(seconds);
       totalSeconds--;
+      if(totalSeconds < 0) handleTimerFinished();
     }
   }
+
+  function handleTimerFinished() {
+    // نمایش پیام و فعال‌سازی دکمه
+    let btn = document.getElementById('loan-request-btn');
+    btn.disabled = false;
+    btn.classList.add('active');
+    btn.style.pointerEvents = "auto";
+    btn.innerText = "ثبت درخواست تسهیلات دومینو بانکینو";
+    // افکت چشمک‌زن (اختیاری)
+    document.getElementById('vamino-timer').style.filter = "grayscale(0.3)";
+    setTimeout(() => { document.getElementById('vamino-timer').style.filter = ""; }, 1500);
+    // event برای دکمه
+    btn.addEventListener('click', function showSuccess() {
+      btn.innerText = "درخواست شما ثبت شد ✔";
+      btn.style.background = "#45bb6c";
+      btn.style.boxShadow = "0 5px 20px #45bb6c33";
+      btn.disabled = true;
+      btn.classList.remove('active');
+    }, {once:true});
+  }
+
   updateTimer();
-  setInterval(updateTimer, 1000);
-}
-vaminoCountdown();
+  let interval = setInterval(updateTimer, 1000);
 </script>
 </body>
-        </html>
+</html>
